@@ -1,26 +1,16 @@
 module.exports.updateInv = (oldArr, newArr) => {
   const res = [];
-  for (let i = 0; i < newArr.length; i++) {
-    let update;
-    const new_element = newArr[i];
-    update = checkForPrescence(new_element, oldArr);
-    if (update.length > 1) {
-      res.push(update);
-    } else if (update.length === 0) {
-      res.push(new_element);
-    }
-  }
-  for (let i = 0; i < oldArr.length; i++) {
-    const element = oldArr[i];
-    update = checkForPrescence(element, res);
-    if (update.length === 0) {
-      res.push(element);
-    }
-  }
+  newArr.forEach((e) => {
+    let update = checkForPrescence(e, oldArr);
+    update.length > 1 ? res.push(update) : res.push(e);
+  });
+  oldArr.forEach((e) => {
+    update = checkForPrescence(e, res);
+    update.length === 0 ? res.push(e) : null;
+  });
 
   res.sort((a, b) => {
-    if (a[1] < b[1]) return -1;
-    if (a[1] > b[1]) return 1;
+    a[1] < b[1] ? -1 : 1;
     return 0;
   });
 
@@ -30,9 +20,7 @@ module.exports.updateInv = (oldArr, newArr) => {
 const checkForPrescence = (new_el, oldArr) => {
   let ans = [];
   oldArr.forEach((i) => {
-    if (i[1] === new_el[1]) {
-      ans.push(...[new_el[0] + i[0], i[1]]);
-    }
+    i[1] === new_el[1] ? ans.push(...[new_el[0] + i[0], i[1]]) : null;
   });
   return ans ? ans : new_el;
 };
