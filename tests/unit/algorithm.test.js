@@ -1,6 +1,7 @@
 const lib = require("../../functions/symmetricDiff");
 const inventory = require("../../functions/inventoryUpdate");
 const noRep = require("../../functions/noRepeatsPlease");
+const { pairwise } = require("../../functions/pairwise");
 
 describe("Algorithms 1: Symmetric Difference", () => {
   it("should return an array with no intersects on the original input", () => {
@@ -140,17 +141,23 @@ describe("Algorithms 2: Update Inventory", () => {
 describe("Algorithm 3: No repeat Please", () => {
   it("should return a number", () => {
     const res = noRep.permAlone("aab");
-    // const res1 = noRep.permAlone("aaa");
-    // const res2 = noRep.permAlone("aabb");
-    // const res3 = noRep.permAlone("abcdefa");
-    // const res4 = noRep.permAlone("a");
+    const res1 = noRep.permAlone("aaa");
+    const res2 = noRep.permAlone("aabb");
+    const res3 = noRep.permAlone("abcdefa");
+    const res4 = noRep.permAlone("a");
 
     expect(!isNaN(res)).toBe(true);
     expect(res).toBe(2);
 
-    // expect(res1).toBe(0);
-    // expect(res2).toBe(8);
-    // expect(res3).toBe(3600);
-    // expect(res4).toBe(1);
+    expect(res1).toBe(0);
+    expect(res2).toBe(8);
+    expect(res3).toBe(3600);
+    expect(res4).toBe(1);
+  });
+});
+
+describe("Algoritm 4: Pairwise", () => {
+  it("should return the sum of the indices that make up the argument parsed", () => {
+    //
   });
 });
