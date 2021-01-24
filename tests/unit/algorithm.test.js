@@ -2,6 +2,7 @@ const lib = require("../../functions/symmetricDiff");
 const inventory = require("../../functions/inventoryUpdate");
 const noRep = require("../../functions/noRepeatsPlease");
 const { pairwise } = require("../../functions/pairwise");
+const { bubbleSort } = require("../../functions/bubbleSort");
 
 describe("Algorithms 1: Symmetric Difference", () => {
   it("should return an array with no intersects on the original input", () => {
@@ -156,8 +157,34 @@ describe("Algorithm 3: No repeat Please", () => {
   });
 });
 
-describe("Algoritm 4: Pairwise", () => {
+describe("Algorithm 4: Pairwise", () => {
+  it("should return a number", () => {
+    // const res = pairwise([1, 2, 3], 6);
+    // expect(!isNaN(res)).toBe(true);
+  });
   it("should return the sum of the indices that make up the argument parsed", () => {
+    let res = pairwise([7, 9, 11, 13, 15], 20);
+    expect(res).toBe(6);
+
+    res = pairwise([1, 4, 2, 3, 0, 5], 7);
+    expect(res).toBe(11);
+
+    res = pairwise([1, 3, 2, 4], 4);
+    expect(res).toBe(1);
+
+    res = pairwise([1, 1, 1], 2);
+    expect(res).toBe(1);
+
+    res = pairwise([0, 0, 0, 0, 1, 1], 1);
+    expect(res).toBe(10);
+
+    res = pairwise([], 100);
+    expect(res).toBe(0);
+  });
+});
+
+describe("Algorithm 5: Bubble Sort", () => {
+  it("should return arr and sort the arrays", () => {
     //
   });
 });
